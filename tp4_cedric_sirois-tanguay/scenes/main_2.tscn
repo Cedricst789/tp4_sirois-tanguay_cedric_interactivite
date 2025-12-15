@@ -89,14 +89,14 @@ volume_db = -19.5
 
 [node name="BlablaMechant" type="Sprite2D" parent="declencheur"]
 visible = false
-position = Vector2(1000.9999, 233.00002)
-scale = Vector2(0.13621236, 0.13306095)
+position = Vector2(1001, 233)
+scale = Vector2(0.136212, 0.133061)
 texture = ExtResource("10_ugyvg")
 
 [node name="speech" type="Sprite2D" parent="declencheur"]
 visible = false
-position = Vector2(1001.0951, 235.5)
-scale = Vector2(0.21571428, 0.21571428)
+position = Vector2(1001.1, 235.5)
+scale = Vector2(0.215714, 0.215714)
 texture = ExtResource("11_k6ibc")
 
 [node name="drapeau_2" parent="." instance=ExtResource("10_xb34a")]
