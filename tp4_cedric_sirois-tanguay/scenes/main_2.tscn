@@ -1,0 +1,114 @@
+[gd_scene load_steps=18 format=3 uid="uid://dojgdmf1sw14g"]
+
+[ext_resource type="PackedScene" uid="uid://dtl3i78ve3cws" path="res://scenes/map_2.tscn" id="1_f241j"]
+[ext_resource type="Script" uid="uid://cn7tnp25eutih" path="res://scenes/main_2.gd" id="1_hmh72"]
+[ext_resource type="PackedScene" uid="uid://bjxeotbi70mb7" path="res://scenes/door.tscn" id="2_43ty5"]
+[ext_resource type="PackedScene" uid="uid://cvehcx67ge87u" path="res://scenes/levier.tscn" id="3_rkluo"]
+[ext_resource type="PackedScene" uid="uid://5rtb6wnlbra4" path="res://scenes/joueur.tscn" id="4_ywx0f"]
+[ext_resource type="PackedScene" uid="uid://cuinsxh21kjq3" path="res://scenes/mechant.tscn" id="5_43ty5"]
+[ext_resource type="Script" uid="uid://c5gw2xcs8xhri" path="res://scenes/declencheur.gd" id="6_rkluo"]
+[ext_resource type="Script" uid="uid://doevhnyrugnjd" path="res://scenes/chrono.gd" id="7_ywx0f"]
+[ext_resource type="AudioStream" uid="uid://bfic7oeocxfmg" path="res://audio/musique menu.mp3" id="8_e1hce"]
+[ext_resource type="Texture2D" uid="uid://dlt11fwfvd2bt" path="res://assets/blabla_mechant.png" id="10_ugyvg"]
+[ext_resource type="PackedScene" uid="uid://j0byrdwrhrom" path="res://scenes/drapeau_2.tscn" id="10_xb34a"]
+[ext_resource type="Texture2D" uid="uid://g3fqx2f0l2fd" path="res://assets/spritesheet-tiles-default.png" id="11_1k1ng"]
+[ext_resource type="Texture2D" uid="uid://buk72n6x4sldb" path="res://assets/bubbles-speech.png" id="11_k6ibc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywx0f"]
+size = Vector2(31, 143)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugyvg"]
+atlas = ExtResource("11_1k1ng")
+region = Rect2(896, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6ibc"]
+atlas = ExtResource("11_1k1ng")
+region = Rect2(896, 896, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwjik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugyvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6ibc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="main_2" type="Node2D"]
+script = ExtResource("1_hmh72")
+
+[node name="map_2" parent="." instance=ExtResource("1_f241j")]
+
+[node name="door" parent="." instance=ExtResource("2_43ty5")]
+position = Vector2(232, 392)
+rotation = 1.5708
+scale = Vector2(2.25, 2.25)
+
+[node name="Area2D" parent="." instance=ExtResource("3_rkluo")]
+position = Vector2(88, 608)
+
+[node name="joueur" parent="." instance=ExtResource("4_ywx0f")]
+position = Vector2(84, 58)
+scale = Vector2(0.59, 0.59)
+
+[node name="mechant" parent="." instance=ExtResource("5_43ty5")]
+position = Vector2(1009, 337)
+
+[node name="declencheur" type="Area2D" parent="."]
+position = Vector2(-1.52588e-05, 0)
+script = ExtResource("6_rkluo")
+
+[node name="timer_label" type="Label" parent="declencheur"]
+visible = false
+offset_left = 912.0
+offset_top = 279.0
+offset_right = 1100.0
+offset_bottom = 306.0
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="chrono" type="Timer" parent="declencheur"]
+wait_time = 60.0
+one_shot = true
+script = ExtResource("7_ywx0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="declencheur"]
+position = Vector2(197, 392)
+shape = SubResource("RectangleShape2D_ywx0f")
+
+[node name="MusiqueMenu" type="AudioStreamPlayer" parent="declencheur"]
+stream = ExtResource("8_e1hce")
+volume_db = -19.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="declencheur"]
+
+[node name="BlablaMechant" type="Sprite2D" parent="declencheur"]
+visible = false
+position = Vector2(1000.9999, 233.00002)
+scale = Vector2(0.13621236, 0.13306095)
+texture = ExtResource("10_ugyvg")
+
+[node name="speech" type="Sprite2D" parent="declencheur"]
+visible = false
+position = Vector2(1001.0951, 235.5)
+scale = Vector2(0.21571428, 0.21571428)
+texture = ExtResource("11_k6ibc")
+
+[node name="drapeau_2" parent="." instance=ExtResource("10_xb34a")]
+position = Vector2(1104, 616)
+scale = Vector2(0.79, 0.79)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1102, 53)
+scale = Vector2(0.79, 0.79)
+sprite_frames = SubResource("SpriteFrames_wwjik")
+autoplay = "default"
+
+[connection signal="body_entered" from="declencheur" to="declencheur" method="_on_body_entered"]
+[connection signal="timeout" from="declencheur/chrono" to="." method="_on_chrono_timeout"]
+[connection signal="body_shape_entered" from="drapeau_2" to="." method="_on_drapeau_2_body_shape_entered"]

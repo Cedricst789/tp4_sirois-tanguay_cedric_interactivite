@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://du18uj6nqm8dg"]
+
+[ext_resource type="Script" uid="uid://h2fecl5brqjk" path="res://drapeau_3.gd" id="1_t5e57"]
+[ext_resource type="Texture2D" uid="uid://g3fqx2f0l2fd" path="res://assets/spritesheet-tiles-default.png" id="2_h8de5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ftyl"]
+atlas = ExtResource("2_h8de5")
+region = Rect2(896, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5upw"]
+atlas = ExtResource("2_h8de5")
+region = Rect2(896, 768, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xe5mh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ftyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5upw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfy80"]
+size = Vector2(65, 71)
+
+[node name="drapeau_3" type="Area2D"]
+script = ExtResource("1_t5e57")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xe5mh")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_wfy80")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

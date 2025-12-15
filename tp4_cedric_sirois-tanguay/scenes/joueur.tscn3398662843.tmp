@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://5rtb6wnlbra4"]
+
+[ext_resource type="Script" uid="uid://kidiccp22gwp" path="res://scripts/joueur.gd" id="1_uj1k6"]
+[ext_resource type="Texture2D" uid="uid://d0c0ull7xkhx5" path="res://assets/kenney_new-platformer-pack-1.0/Spritesheets/spritesheet-characters-default.png" id="2_2y66e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivebw"]
+atlas = ExtResource("2_2y66e")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dga13"]
+atlas = ExtResource("2_2y66e")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqscv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivebw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dga13")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="joueur" type="CharacterBody2D"]
+script = ExtResource("1_uj1k6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qqscv")
+animation = &"idle"
+frame_progress = 0.438784

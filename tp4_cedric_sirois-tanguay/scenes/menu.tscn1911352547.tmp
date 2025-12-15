@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dybtfo0xjok2q"]
+
+[ext_resource type="Script" uid="uid://dvs4431bncgy3" path="res://menu.gd" id="1_lti8b"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_lti8b")
+
+[node name="button_manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start" type="Button" parent="button_manager"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 221.0
+offset_right = 657.0
+offset_bottom = 275.0
+text = "Jouer"
+
+[node name="Quit" type="Button" parent="button_manager"]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 297.0
+offset_right = 657.0
+offset_bottom = 352.0
+text = "Arrêter"
+
+[connection signal="pressed" from="button_manager/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="button_manager/Quit" to="." method="_on_quit_pressed"]

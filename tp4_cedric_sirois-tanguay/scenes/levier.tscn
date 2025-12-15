@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvehcx67ge87u"]
+
+[ext_resource type="Texture2D" uid="uid://g3fqx2f0l2fd" path="res://assets/spritesheet-tiles-default.png" id="1_666p1"]
+[ext_resource type="Script" uid="uid://cejtsuayju114" path="res://scripts/levier.gd" id="1_ltfv5"]
+[ext_resource type="AudioStream" uid="uid://b1gdclvbf4ay6" path="res://audio/sfx_bump.ogg" id="3_xqq8n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltfv5"]
+atlas = ExtResource("1_666p1")
+region = Rect2(704, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5snp"]
+atlas = ExtResource("1_666p1")
+region = Rect2(704, 448, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1r2uc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltfv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5snp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5snp"]
+size = Vector2(56, 56)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_ltfv5")
+
+[node name="active_levier" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1r2uc")
+frame_progress = 0.123516
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 6)
+shape = SubResource("RectangleShape2D_d5snp")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="levier_activer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xqq8n")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

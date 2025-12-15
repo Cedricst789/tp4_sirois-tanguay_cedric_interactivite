@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjxeotbi70mb7"]
+
+[ext_resource type="Texture2D" uid="uid://g3fqx2f0l2fd" path="res://assets/spritesheet-tiles-default.png" id="1_ba8gm"]
+[ext_resource type="Script" uid="uid://dkhm2qilqufow" path="res://scripts/door.gd" id="1_v6xrn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6xrn"]
+atlas = ExtResource("1_ba8gm")
+region = Rect2(960, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0phs7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6xrn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50cdl"]
+size = Vector2(64, 64)
+
+[node name="door" type="Node2D"]
+script = ExtResource("1_v6xrn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="porteouvre" type="AnimatedSprite2D" parent="StaticBody2D"]
+sprite_frames = SubResource("SpriteFrames_0phs7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_50cdl")

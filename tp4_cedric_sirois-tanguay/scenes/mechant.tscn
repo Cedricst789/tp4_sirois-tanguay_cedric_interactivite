@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cuinsxh21kjq3"]
+
+[ext_resource type="Script" uid="uid://hw8730st4ocf" path="res://scenes/mechant.gd" id="1_4bjq7"]
+[ext_resource type="Texture2D" uid="uid://8nui5dh5mt8w" path="res://assets/spritesheet-enemies-default.png" id="1_up0dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bjq7"]
+size = Vector2(63, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f564v"]
+atlas = ExtResource("1_up0dd")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpwhr"]
+atlas = ExtResource("1_up0dd")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad3no"]
+atlas = ExtResource("1_up0dd")
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e4ayr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f564v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpwhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad3no")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="mechant" type="Node2D"]
+script = ExtResource("1_4bjq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_4bjq7")
+
+[node name="mechant_anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e4ayr")
+frame_progress = 0.870861

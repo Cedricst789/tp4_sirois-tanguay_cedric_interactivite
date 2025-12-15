@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfic7oeocxfmg"
+path="res://.godot/imported/musique menu.mp3-b963642985e4b10aaddf0d4f76f2af3e.mp3str"
+
+[deps]
+
+source_file="res://audio/musique menu.mp3"
+dest_files=["res://.godot/imported/musique menu.mp3-b963642985e4b10aaddf0d4f76f2af3e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
