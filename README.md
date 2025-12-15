@@ -5,4 +5,5 @@ tp4 pour intéractivité
 Déplacement = Flèches
 
 Pause = Escape
+
 Dans le 3iem niveau = Bar espace
