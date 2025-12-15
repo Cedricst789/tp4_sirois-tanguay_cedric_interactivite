@@ -1,5 +1,4 @@
-# tp3_sirois-tanguay_cedric
-tp4 pour intéractivité
+#tp4 pour intéractivité
 
 <h1> Les commandes </h1>
 Déplacement = Flèches
