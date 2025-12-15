@@ -1,4 +1,4 @@
-#tp4 pour intéractivité
+# Tp4 pour intéractivité
 
 <h1> Les commandes </h1>
 Déplacement = Flèches
